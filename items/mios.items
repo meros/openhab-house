@@ -1,0 +1,2 @@
+Switch	SwitchCoffee "Coffe brewer" (MSwitch) {mios="unit:house,device:10/service/SwitchPower1/Status"}
+Dimmer  DimmerBlaj "Dimmern" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
