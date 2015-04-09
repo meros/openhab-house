@@ -1,0 +1,19 @@
+import org.openhab.model.script.actions.Timer
+
+var Timer offTimer
+
+rule "Turn off in 15 minutes"
+when
+Item SwitchCoffee changed
+then
+	if(offTimer!=null) {
+		offTimer.cancel
+		offTimer = null
+	}
+
+	if(SwitchCoffee.state == ON){
+		offTimer = createTimer(now.plusMinutes(15)) 
+			[|sendCommand(SwitchCoffee, OFF)]
+	}
+	
+end
