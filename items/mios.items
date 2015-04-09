@@ -1,2 +1,10 @@
-Switch	SwitchCoffee "Coffe brewer" (MSwitch) {mios="unit:house,device:10/service/SwitchPower1/Status"}
+Group MAll
+Group MSwitches (MAll)
+Group MLamps (MAll)
+Group:Switch:OR MMysBelysning "Mysbelysning nere" (MAll)
+
+Switch	SwitchCoffee "Kaffebryggaren" (MSwitches) {mios="unit:house,device:10/service/SwitchPower1/Status"}
+Switch	SwitchLampKitchen "Kökslampa" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:4/service/SwitchPower1/Status"}
+Switch	SwitchLampGlas "Glaslampa" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:9/service/SwitchPower1/Status"}
+Switch	SwitchLampOrange "Oranga lampan" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:17/service/SwitchPower1/Status"}
 Dimmer  DimmerBlaj "Dimmern" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}

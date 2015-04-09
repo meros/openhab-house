@@ -1,4 +1,0 @@
-sitemap house { 
-Switch item=SwitchCoffee
-Slider item=DimmerBlaj
-}

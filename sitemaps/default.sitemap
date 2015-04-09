@@ -1,0 +1,8 @@
+sitemap house { 
+Switch item=SwitchCoffee
+Switch item=SwitchLampKitchen 
+Switch item=SwitchLampGlas
+Switch item=SwitchLampOrange
+Switch item=MMysBelysning
+Slider item=DimmerBlaj
+}
