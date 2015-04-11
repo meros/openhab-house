@@ -1,6 +1,6 @@
 import org.openhab.model.script.actions.Timer
 
-var Timer offTimer
+var Timer offTimer = null
 
 rule "Turn off in 15 minutes"
 when
@@ -13,10 +13,26 @@ then
 
 	if(SwitchCoffee.state == ON){
 		pushover("Starting coffee maker")
-		offTimer = createTimer(now.plusMinutes(15))	[|
+		offTimer = createTimer(now.plusMinutes(15)) [|
 			sendCommand(SwitchCoffee, OFF)
 			pushover("Turning coffee maker off due to timer")			
 		]
 	}
 	
+end
+
+rule "Notify coffee done"
+when
+Item SwitchCoffee_Watt changed
+then
+	var brewThreshhold = 500
+	var idleThreshhold = 5
+	
+	if (SwitchCoffee_Watt.state > idleThreshhold &&
+		previousState > brewThreshhold) {
+			
+		createTimer(now.plusSeconds(30)) [|
+			pushover("Coffee done!")			
+		];
+	}
 end

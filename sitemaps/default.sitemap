@@ -1,8 +1,16 @@
 sitemap house { 
 Switch item=SwitchCoffee
+Text item=SwitchCoffee_Watt
+
 Switch item=SwitchLampKitchen 
+Text item=SwitchLampKitchen_Watt
+
 Switch item=SwitchLampGlas
+Text item=SwitchLampGlas_Watt
+
 Switch item=SwitchLampOrange
+Text item=SwitchLampOrange_Watt
+
 Switch item=MMysBelysning
 Slider item=DimmerBlaj
 }
