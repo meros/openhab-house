@@ -29,7 +29,8 @@ then
 	var idleThreshhold = 5
 	
 	if (SwitchCoffee_Watt.state > idleThreshhold &&
-		previousState > brewThreshhold) {
+		SwitchCoffee_Watt.state < brewThreshhold &&
+		previousState >= brewThreshhold) {
 			
 		createTimer(now.plusSeconds(30)) [|
 			pushover("Coffee done!")			
