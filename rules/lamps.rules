@@ -1,0 +1,14 @@
+rule "Lamps on"
+when 
+Item LampsOn_Event received update ON
+then
+	sendCommand(MAutoLamps, ON)
+end
+
+rule "Lamps off"
+when 
+Item LampsOff_Event received update ON
+then
+	sendCommand(MAutoLamps, OFF)
+end
+

@@ -4,18 +4,18 @@ Group MLamps (MAll)
 
 Group MEnergy (MAll)
 
-Group:Switch:OR MMysBelysning "Mysbelysning nere" (MAll)
+Group:Switch:AND MAutoLamps "Mysbelysning nere" (MAll)
 
 Switch SwitchCoffee "Kaffebryggaren" (MSwitches) {mios="unit:house,device:10/service/SwitchPower1/Status"}
 Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" (MEnergy) {mios="unit:house,device:10/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampKitchen "Kökslampa" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:4/service/SwitchPower1/Status"}
+Switch SwitchLampKitchen "Kökslampa" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:4/service/SwitchPower1/Status"}
 Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" (MEnergy) {mios="unit:house,device:4/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampGlas "Glaslampa" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:9/service/SwitchPower1/Status"}
+Switch SwitchLampGlas "Glaslampa" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:9/service/SwitchPower1/Status"}
 Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" (MEnergy) {mios="unit:house,device:9/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampOrange "Oranga lampan" (MSwitches, MLamps, MMysBelysning) {mios="unit:house,device:17/service/SwitchPower1/Status"}
+Switch SwitchLampOrange "Oranga lampan" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:17/service/SwitchPower1/Status"}
 Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" (MEnergy) {mios="unit:house,device:17/service/EnergyMetering1/Watts"}
 
-Dimmer DimmerBlaj "Dimmern" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
+Dimmer DimmerLampComputer "Dimmern vid datorn" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}

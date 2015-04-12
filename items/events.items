@@ -1,0 +1,4 @@
+DateTime LampsOn "Turn on lamps at [%1$ta %1$tR]" {astro="planet=sun, type=set, property=start, offset=-30"}
+DateTime LampsOff "Turn off lamps at [%1$ta %1$tR]" {astro="planet=sun, type=rise, property=end, offset=30"}
+Switch LampsOn_Event {astro="planet=sun, type=set, property=start, offset=-30"}
+Switch LampsOff_Event {astro="planet=sun, type=rise, property=end, offset=30"}
