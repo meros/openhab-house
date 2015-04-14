@@ -1,14 +1,45 @@
-rule "Lamps on"
-when 
-Item LampsOn_Event received update ON
-then
-	sendCommand(MAutoLamps, ON)
-end
+import org.openhab.model.script.actions.Timer
 
-rule "Lamps off"
+var Timer motionTimer = null
+var org.eclipse.xtext.xbase.lib.Functions$Function1 setLamps = [boolean hasMotion|
+	logInfo("FILE", "Calling setLamps with motion = " + hasMotion)
+	
+	// TODO: compare now with time limits (lamps should be off 10-06 if no motion)
+	var lampsOn = SunElevation.state < 10 || hasMotion // TODO: hasMotion should only activate lamps 10-06 
+		
+	if (lampsOn) {
+		sendCommand(MAutoLamps, ON)	
+	} else {
+		sendCommand(MAutoLamps, OFF)
+	}
+]
+
+rule "Trigger autolamps script"
 when 
-Item LampsOff_Event received update ON
+Item SunElevation received update or
+Item MotionKitchen received update
 then
-	sendCommand(MAutoLamps, OFF)
+
+	// Every time we detect an open motion sensor, we restart a timer 
+	if (MotionKitchen.state == OPEN) {
+		logInfo("FILE", "MotionKitchen is open, recreating timer!")
+	
+		if (motionTimer != null) {
+			motionTimer.cancel()
+			motionTimer = null
+		}
+		
+		motionTimer = createTimer(now.plusSeconds(15)) [|
+			logInfo("FILE", "Timer ran out!")
+		
+			motionTimer = null		
+		
+			// When timer has run out, state of motion determines hasMotion
+			setLamps.apply(MotionKitchen.state == OPEN)
+		]
+	}
+
+	// As long as there is a motionTimer we consider that we have motion down here (CLOSE and within time limit or OPEN)
+	setLamps.apply(motionTimer != null)
 end
 

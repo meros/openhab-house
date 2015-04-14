@@ -17,7 +17,8 @@ sitemap house {
 	}
 
 	Text label="Automatisering" icon="settings" {
-		Text item=LampsOn icon="switch-on"
-		Text item=LampsOff icon="switch-off"
+		Text item=SunElevation
 	}	
+	
+	Text item=MotionKitchen
 }

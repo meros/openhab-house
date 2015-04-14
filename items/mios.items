@@ -1,21 +1,18 @@
 Group MAll
-Group MSwitches (MAll)
-Group MLamps (MAll)
-
-Group MEnergy (MAll)
-
 Group:Switch:AND MAutoLamps "Mysbelysning nere" (MAll)
 
-Switch SwitchCoffee "Kaffebryggaren" (MSwitches) {mios="unit:house,device:10/service/SwitchPower1/Status"}
-Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" (MEnergy) {mios="unit:house,device:10/service/EnergyMetering1/Watts"}
+Switch SwitchCoffee "Kaffebryggaren" {mios="unit:house,device:10/service/SwitchPower1/Status"}
+Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" {mios="unit:house,device:10/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampKitchen "Kökslampa" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:4/service/SwitchPower1/Status"}
-Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" (MEnergy) {mios="unit:house,device:4/service/EnergyMetering1/Watts"}
+Switch SwitchLampKitchen "Kökslampa" (MAutoLamps) {mios="unit:house,device:4/service/SwitchPower1/Status"}
+Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" {mios="unit:house,device:4/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampGlas "Glaslampa" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:9/service/SwitchPower1/Status"}
-Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" (MEnergy) {mios="unit:house,device:9/service/EnergyMetering1/Watts"}
+Switch SwitchLampGlas "Glaslampa" (MAutoLamps) {mios="unit:house,device:9/service/SwitchPower1/Status"}
+Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" {mios="unit:house,device:9/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampOrange "Oranga lampan" (MSwitches, MLamps, MAutoLamps) {mios="unit:house,device:17/service/SwitchPower1/Status"}
-Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" (MEnergy) {mios="unit:house,device:17/service/EnergyMetering1/Watts"}
+Switch SwitchLampOrange "Oranga lampan" (MAutoLamps) {mios="unit:house,device:17/service/SwitchPower1/Status"}
+Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" {mios="unit:house,device:17/service/EnergyMetering1/Watts"}
 
 Dimmer DimmerLampComputer "Dimmern vid datorn" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
+
+Contact MotionKitchen "Rörelsesensor kök [%s]" {mios="unit:house,device:11/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
