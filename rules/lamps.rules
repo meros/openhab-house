@@ -5,7 +5,7 @@ var org.eclipse.xtext.xbase.lib.Functions$Function1 setLamps = [boolean hasMotio
 	logInfo("FILE", "Calling setLamps with motion = " + hasMotion)
 	
 	// TODO: compare now with time limits (lamps should be off 10-06 if no motion)
-	var lampsOn = SunElevation.state < 10 || hasMotion // TODO: hasMotion should only activate lamps 10-06 
+	var lampsOn = SunElevation.state < 10
 		
 	if (lampsOn) {
 		sendCommand(MAutoLamps, ON)	
