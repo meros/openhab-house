@@ -47,7 +47,7 @@ end
 rule "Update autolamps"
 when 
 Item AutoLamps_SunElevation received update or
-Item AutoLamps_Motion received update
+Item AutoLamps_Motion received update or
 Item AutoLamps_NightTime received update
 then
 	var lampsOn = AutoLamps_SunElevation.state < sunMinElevation &&
