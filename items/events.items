@@ -1,1 +1,3 @@
-Number SunElevation "Elevation of sun [%f]" {astro="planet=sun, type=position, property=elevation"}
+Number AutoLamps_SunElevation "Elevation of sun [%f]" {astro="planet=sun, type=position, property=elevation"}
+Switch AutoLamps_Motion
+Switch AutoLamps_NightTime

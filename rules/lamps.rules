@@ -1,45 +1,61 @@
 import org.openhab.model.script.actions.Timer
 
+// Configuration
+var int motionBufferMinutes = 15
+var int sunMinElevation = 15
+
 var Timer motionTimer = null
-var org.eclipse.xtext.xbase.lib.Functions$Function1 setLamps = [boolean hasMotion|
-	logInfo("FILE", "Calling setLamps with motion = " + hasMotion)
+
+// Rule to control motion switch, it is based on a motion sensor but 'buffered' 
+// to keep motion on for x minutes after detected motion ends
+rule "Motion downstairs"
+when
+Item MotionKitchen received update
+then
+	// Always reset timer when state changes
+	if (motionTimer != null) {
+		motionTimer.cancel()
+		motionTimer = null
+	}
 	
-	// TODO: compare now with time limits (lamps should be off 10-06 if no motion)
-	var lampsOn = SunElevation.state < 13
+	if (MotionKitchen.state == CLOSED) {
+		// If state is closed, turn motion off in x minutes (unless cancelled due to new state)		
+		motionTimer = createTimer(now.plusMinutes(motionBufferMinutes)) [|
+			sendCommand(AutoLamps_Motion, OFF)
+		]		
+	} else {
+		// If state is open, always turn motion on
+		sendCommand(AutoLamps_Motion, ON)	
+	}	
+end
+
+// Autolamps are suppressed during sleeping hours, these two rules control that
+rule "Nighttime OFF"
+when 
+Time cron "0 6 * * *"
+then
+	sendCommand(AutoLamps_NightTime, OFF)
+end
+rule "Nighttime ON"
+when 
+Time cron "15 22 * * *"
+then
+	sendCommand(AutoLamps_NightTime, ON)
+end
+
+// The main rule, lamps on during sun down, but not sleeping hours unless motion
+rule "Update autolamps"
+when 
+Item AutoLamps_SunElevation received update or
+Item AutoLamps_Motion received update
+then
+	var lampsOn = AutoLamps_SunElevation.state < sunMinElevation &&
+		(AutoLamps_NightTime.state == OFF || AutoLamps_Motion.state == ON) 
 		
 	if (lampsOn) {
 		sendCommand(MAutoLamps, ON)	
 	} else {
 		sendCommand(MAutoLamps, OFF)
 	}
-]
-
-rule "Trigger autolamps script"
-when 
-Item SunElevation received update or
-Item MotionKitchen received update
-then
-
-	// Every time we detect an open motion sensor, we restart a timer 
-	if (MotionKitchen.state == OPEN) {
-		logInfo("FILE", "MotionKitchen is open, recreating timer!")
-	
-		if (motionTimer != null) {
-			motionTimer.cancel()
-			motionTimer = null
-		}
-		
-		motionTimer = createTimer(now.plusSeconds(15)) [|
-			logInfo("FILE", "Timer ran out!")
-		
-			motionTimer = null		
-		
-			// When timer has run out, state of motion determines hasMotion
-			setLamps.apply(MotionKitchen.state == OPEN)
-		]
-	}
-
-	// As long as there is a motionTimer we consider that we have motion down here (CLOSE and within time limit or OPEN)
-	setLamps.apply(motionTimer != null)
 end
 
