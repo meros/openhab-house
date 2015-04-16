@@ -32,13 +32,13 @@ end
 // Autolamps are suppressed during sleeping hours, these two rules control that
 rule "Nighttime OFF"
 when 
-Time cron "0 6 * * *"
+Time cron "0 0 6 * * *"
 then
 	sendCommand(AutoLamps_NightTime, OFF)
 end
 rule "Nighttime ON"
 when 
-Time cron "15 22 * * *"
+Time cron "0 15 22 * * *"
 then
 	sendCommand(AutoLamps_NightTime, ON)
 end
