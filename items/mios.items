@@ -16,3 +16,10 @@ Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" {mios="unit:house,devic
 Dimmer DimmerLampComputer "Dimmern vid datorn" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
 
 Contact MotionKitchen "Rörelsesensor kök [%s]" {mios="unit:house,device:11/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+
+Contact DoorFront "Ytterdörr [%s]" {mios="unit:house,device:19/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorFront_Battery "Ytterdörr batteri [%d]" {mios="unit:house,device:19/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact DoorBack "Altandörr [%s]" {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorBack_Battery "Altandörr batteri [%d]" {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact DoorSide "Grovköksdörr [%s]" {mios="unit:house,device:16/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorSide_Battery "Grovköksdörr batteri [%d]" {mios="unit:house,device:16/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}

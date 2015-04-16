@@ -23,4 +23,10 @@ sitemap house {
 	}	
 	
 	Text item=MotionKitchen
+	Text item=DoorFront
+	Text item=DoorFront_Battery		
+	Text item=DoorBack
+	Text item=DoorBack_Battery		
+	Text item=DoorSide
+	Text item=DoorSide_Battery		
 }
