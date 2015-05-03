@@ -43,6 +43,8 @@ then
 	sendCommand(AutoLamps_NightTime, ON)
 end
 
+var oldLampsOn = false;
+
 // The main rule, lamps on during sun down, but not sleeping hours unless motion
 rule "Update autolamps"
 when 
@@ -52,11 +54,17 @@ Item AutoLamps_NightTime received update
 then
 	var lampsOn = AutoLamps_SunElevation.state < sunMinElevation &&
 		(AutoLamps_NightTime.state != ON || AutoLamps_Motion.state == ON) 
+	
+	if (lampsOn == oldLampsOn) {
+		return;
+	}
 		
 	if (lampsOn) {
 		sendCommand(MAutoLamps, ON)	
 	} else {
 		sendCommand(MAutoLamps, OFF)
 	}
+	
+	oldLampsOn = lampsOn;
 end
 
