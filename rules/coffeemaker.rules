@@ -12,10 +12,8 @@ then
 	}
 
 	if(SwitchCoffee.state == ON){
-		pushover("Starting coffee maker")
 		offTimer = createTimer(now.plusMinutes(15)) [|
 			sendCommand(SwitchCoffee, OFF)
-			pushover("Turning coffee maker off due to timer")			
 		]
 	}
 	
