@@ -1,0 +1,50 @@
+import org.openhab.model.script.actions.Timer
+
+var int sunMinElevation = -3
+var int motionBufferMinutes = 5
+var Timer motionTimer = null
+var boolean oldSpotlightOn = false
+
+rule "Spotlight timer"
+when
+Item MotionPorch changed
+then
+	// Always reset timer when state changes
+	if (motionTimer != null) {
+		motionTimer.cancel()
+		motionTimer = null
+	}
+	
+	if (MotionPorch.state == CLOSED) {
+		// If state is closed, turn motion off in x minutes (unless cancelled due to new state)		
+		motionTimer = createTimer(now.plusMinutes(motionBufferMinutes)) [|
+			sendCommand(Spotlight_Motion, OFF)
+			pushover("Spotlight motion timeout!")
+		]		
+	} else {
+		// If state is open, always turn motion on
+		sendCommand(Spotlight_Motion, ON)
+		pushover("Spotlight motion detected!")					
+	}	
+end
+
+rule "Spotlight on"
+when
+Item Spotlight_SunElevation received update or
+Item Spotlight_Motion changed 
+then
+	var spotlightOn = Spotlight_Motion.state == ON && Spotlight_SunElevation.state < sunMinElevation
+	
+	
+	if (spotlightOn == oldSpotlightOn) {
+		return;
+	}
+		
+	if (spotlightOn) {
+		pushover("Turning on spotlight!")							
+	} else {
+		pushover("Turning off spotlight!")
+	}
+	
+	oldSpotlightOn = spotlightOn;
+end

@@ -1,3 +1,8 @@
 Number AutoLamps_SunElevation "Elevation of sun [%f]" {astro="planet=sun, type=position, property=elevation"}
 Switch AutoLamps_Motion
 Switch AutoLamps_NightTime
+Switch AutoLamps_ForceOn
+
+Number Spotlight_SunElevation "Elevation of sun [%f]" {astro="planet=sun, type=position, property=elevation"}
+Switch Spotlight_Motion
+Switch Spotlight_NightTime

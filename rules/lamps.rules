@@ -3,8 +3,10 @@ import org.openhab.model.script.actions.Timer
 // Configuration
 var int motionBufferMinutes = 15
 var int sunMinElevation = 15
-
 var Timer motionTimer = null
+var boolean oldLampsOn = false
+var int hoursBeforeForceOnTimeout = 4
+var Timer forceOnTimer = null
 
 // Rule to control motion switch, it is based on a motion sensor but 'buffered' 
 // to keep motion on for x minutes after detected motion ends
@@ -43,17 +45,33 @@ then
 	sendCommand(AutoLamps_NightTime, ON)
 end
 
-var oldLampsOn = false;
+rule "Force on timeout"
+when
+Item AutoLamps_ForceOn received update
+then
+	if (forceOnTimer != null) {
+		forceOnTimer.cancel()
+		forceOnTimer = null
+	}
+
+	if (AutoLamps_ForceOn.state == ON) {
+		forceOnTimer = createTimer(now.plusHours(hoursBeforeForceOnTimeout)) [|
+			sendCommand(AutoLamps_ForceOn, OFF)
+		]				
+	}
+end
 
 // The main rule, lamps on during sun down, but not sleeping hours unless motion
 rule "Update autolamps"
 when 
 Item AutoLamps_SunElevation received update or
 Item AutoLamps_Motion received update or
-Item AutoLamps_NightTime received update
+Item AutoLamps_NightTime received update or
+Item AutoLamps_ForceOn received update
 then
-	var lampsOn = AutoLamps_SunElevation.state < sunMinElevation &&
-		(AutoLamps_NightTime.state != ON || AutoLamps_Motion.state == ON) 
+	var lampsOn = AutoLamps_ForceOn.state == ON ||
+		(AutoLamps_SunElevation.state < sunMinElevation &&
+			(AutoLamps_NightTime.state != ON || AutoLamps_Motion.state == ON)) 
 	
 	if (lampsOn == oldLampsOn) {
 		return;

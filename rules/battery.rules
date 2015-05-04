@@ -1,0 +1,16 @@
+var int threshold = 10
+
+rule "Battery low"
+when 
+Time cron "0 0 * * * ?" or
+Item MBatteryLevel changed
+then
+	if (MBatteryLevel.state <= threshold) {
+		MBatteryLevel.getMembers().forEach(
+			i | 
+			if (i.state <= threshold) {
+				pushover("Low battery in " + i.getName())			
+			}
+		)							
+	}
+end 

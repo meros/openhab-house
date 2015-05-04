@@ -1,7 +1,18 @@
 sitemap house { 
-	Text label="Lamps" icon="switch-on" {
+	Text label="Coffee" icon="switch-on" {
 		Switch item=SwitchCoffee
 		Text item=SwitchCoffee_Watt
+	}
+	
+	Text label="Spotlight garden" icon="switch-on" {
+		Switch item=SwitchLampSpot
+		Text item=SwitchLampSpot_Watt
+		
+		Text item=MotionPorch
+		Text item=MotionPorch_Battery		
+	}
+		
+	Text label="Lamps" icon="switch-on" {
 
 		Switch item=SwitchLampKitchen 
 		Text item=SwitchLampKitchen_Watt
@@ -20,13 +31,15 @@ sitemap house {
 		Text item=AutoLamps_SunElevation
 		Switch item=AutoLamps_Motion
 		Switch item=AutoLamps_NightTime
+		Text item=MotionKitchen
+		Text item=DoorFront
+		Text item=DoorFront_Battery		
+		Text item=DoorBack
+		Text item=DoorBack_Battery		
+		Text item=DoorSide
+		Text item=DoorSide_Battery	
+		
+		Text item=MBatteryLevel				
 	}	
 	
-	Text item=MotionKitchen
-	Text item=DoorFront
-	Text item=DoorFront_Battery		
-	Text item=DoorBack
-	Text item=DoorBack_Battery		
-	Text item=DoorSide
-	Text item=DoorSide_Battery		
 }
