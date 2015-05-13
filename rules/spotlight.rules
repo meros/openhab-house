@@ -19,12 +19,12 @@ then
 		// If state is closed, turn motion off in x minutes (unless cancelled due to new state)		
 		motionTimer = createTimer(now.plusMinutes(motionBufferMinutes)) [|
 			sendCommand(Spotlight_Motion, OFF)
-			pushover("Spotlight motion timeout!")
+			//pushover("Spotlight motion timeout!")
 		]		
 	} else {
 		// If state is open, always turn motion on
 		sendCommand(Spotlight_Motion, ON)
-		pushover("Spotlight motion detected!")					
+		//pushover("Spotlight motion detected!")					
 	}	
 end
 
@@ -41,9 +41,9 @@ then
 	}
 		
 	if (spotlightOn) {
-		pushover("Turning on spotlight!")							
+		//pushover("Turning on spotlight!")							
 	} else {
-		pushover("Turning off spotlight!")
+		//pushover("Turning off spotlight!")
 	}
 	
 	oldSpotlightOn = spotlightOn;
