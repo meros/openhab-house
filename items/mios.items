@@ -25,8 +25,8 @@ Number MotionKitchen_Battery "Rörelsesensor kök batteri [%d]" (MBatteryLevel) 
 Contact MotionPorch "Rörelsesensor ute [%s]" {mios="unit:house,device:21/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
 Number MotionPorch_Battery "Rörelsesensor ute batteri [%d]" (MBatteryLevel) {mios="unit:house,device:21/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 
-Contact DoorFront "Ytterdörr [%s]" {mios="unit:house,device:19/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
-Number DoorFront_Battery "Ytterdörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:19/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact DoorFront "Ytterdörr [%s]" {mios="unit:house,device:26/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorFront_Battery "Ytterdörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:26/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 Contact DoorBack "Altandörr [%s]" {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
 Number DoorBack_Battery "Altandörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 Contact DoorSide "Grovköksdörr [%s]" {mios="unit:house,device:16/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
