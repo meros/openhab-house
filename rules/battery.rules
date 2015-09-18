@@ -2,7 +2,7 @@ var int threshold = 10
 
 rule "Battery low"
 when 
-Time cron "0 0 * * * ?" or
+Time cron "0 0 0 * * ?" or
 Item MBatteryLevel changed
 then
 	if (MBatteryLevel.state <= threshold) {
