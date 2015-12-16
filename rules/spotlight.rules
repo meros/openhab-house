@@ -1,7 +1,7 @@
 import org.openhab.model.script.actions.Timer
 
-var int sunMinElevation = -3
-var int motionBufferMinutes = 5
+var int sunMinElevation = 4
+var int motionBufferSeconds = 30
 var Timer motionTimer = null
 var boolean oldSpotlightOn = false
 
@@ -17,7 +17,7 @@ then
 	
 	if (MotionPorch.state == CLOSED) {
 		// If state is closed, turn motion off in x minutes (unless cancelled due to new state)		
-		motionTimer = createTimer(now.plusMinutes(motionBufferMinutes)) [|
+		motionTimer = createTimer(now.plusSeconds(motionBufferSeconds)) [|
 			sendCommand(Spotlight_Motion, OFF)
 			//pushover("Spotlight motion timeout!")
 		]		
@@ -41,9 +41,11 @@ then
 	}
 		
 	if (spotlightOn) {
-		//pushover("Turning on spotlight!")							
+	   	sendCommand(SwitchLampSpot, ON)		 
+		pushover("Turning on spotlight!")							
 	} else {
-		//pushover("Turning off spotlight!")
+	   	sendCommand(SwitchLampSpot, OFF)		 
+		pushover("Turning off spotlight!")
 	}
 	
 	oldSpotlightOn = spotlightOn;
