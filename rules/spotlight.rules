@@ -31,9 +31,10 @@ end
 rule "Spotlight on"
 when
 Item Spotlight_SunElevation received update or
-Item Spotlight_Motion changed 
+Item Spotlight_Motion changed or
+Item Alarm_Away changed
 then
-	var spotlightOn = Spotlight_Motion.state == ON && Spotlight_SunElevation.state < sunMinElevation
+	var spotlightOn = Spotlight_Motion.state == ON && Spotlight_SunElevation.state < sunMinElevation && Alarm_Away.state == ON
 	
 	
 	if (spotlightOn == oldSpotlightOn) {
@@ -49,4 +50,14 @@ then
 	}
 	
 	oldSpotlightOn = spotlightOn;
+end
+
+rule "Door open"
+when
+Item DoorFront changed or
+Item DoorBack changed
+then
+	if (Alarm_Away.state == ON) {
+	   pushover("ALARM! DOOR BREACHED!!")
+	}
 end

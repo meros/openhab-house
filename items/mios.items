@@ -2,32 +2,32 @@ Group MAll
 Group:Switch:AND MAutoLamps "Mysbelysning nere" (MAll)
 Group:Number:MIN MBatteryLevel "Minimum battery level [%d]" (MAll)
 
-Switch SwitchCoffee "Kaffebryggaren" {mios="unit:house,device:10/service/SwitchPower1/Status"}
-Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" {mios="unit:house,device:10/service/EnergyMetering1/Watts"}
+Switch SwitchCoffee "Kaffebryggaren" {mios="unit:house,device:30/service/SwitchPower1/Status"}
+Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" {mios="unit:house,device:30/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampKitchen "Kökslampa" (MAutoLamps) {mios="unit:house,device:4/service/SwitchPower1/Status"}
-Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" {mios="unit:house,device:4/service/EnergyMetering1/Watts"}
+Switch SwitchLampKitchen "Kökslampa" (MAutoLamps) {mios="unit:house,device:33/service/SwitchPower1/Status"}
+Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" {mios="unit:house,device:33/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampGlas "Glaslampa" (MAutoLamps) {mios="unit:house,device:9/service/SwitchPower1/Status"}
-Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" {mios="unit:house,device:9/service/EnergyMetering1/Watts"}
+Switch SwitchLampGlas "Glaslampa" (MAutoLamps) {mios="unit:house,device:38/service/SwitchPower1/Status"}
+Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" {mios="unit:house,device:38/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampOrange "Oranga lampan" (MAutoLamps) {mios="unit:house,device:17/service/SwitchPower1/Status"}
-Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" {mios="unit:house,device:17/service/EnergyMetering1/Watts"}
+Switch SwitchLampOrange "Oranga lampan" (MAutoLamps) {mios="unit:house,device:31/service/SwitchPower1/Status"}
+Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" {mios="unit:house,device:31/service/EnergyMetering1/Watts"}
 
-Switch SwitchLampSpot "Spotlight ute" {mios="unit:house,device:5/service/SwitchPower1/Status"}
-Number SwitchLampSpot_Watt "Spotlight ute watt [%d] W" {mios="unit:house,device:5/service/EnergyMetering1/Watts"}
+Switch SwitchLampSpot "Spotlight ute" {mios="unit:house,device:40/service/SwitchPower1/Status"}
+Number SwitchLampSpot_Watt "Spotlight ute watt [%d] W" {mios="unit:house,device:40/service/EnergyMetering1/Watts"}
 
 Dimmer DimmerLampComputer "Dimmern vid datorn" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
 
 Contact MotionKitchen "Rörelsesensor kök [%s]" {mios="unit:house,device:11/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
 Number MotionKitchen_Battery "Rörelsesensor kök batteri [%d]" (MBatteryLevel) {mios="unit:house,device:11/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 
-Contact MotionPorch "Rörelsesensor ute [%s]" {mios="unit:house,device:21/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
-Number MotionPorch_Battery "Rörelsesensor ute batteri [%d]" (MBatteryLevel) {mios="unit:house,device:21/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact MotionPorch "Rörelsesensor ute [%s]" {mios="unit:house,device:34/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number MotionPorch_Battery "Rörelsesensor ute batteri [%d]" (MBatteryLevel) {mios="unit:house,device:34/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 
-Contact DoorFront "Ytterdörr [%s]" {mios="unit:house,device:26/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
-Number DoorFront_Battery "Ytterdörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:26/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
-Contact DoorBack "Altandörr [%s]" {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
-Number DoorBack_Battery "Altandörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:20/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact DoorFront "Ytterdörr [%s]" {mios="unit:house,device:41/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorFront_Battery "Ytterdörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:41/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
+Contact DoorBack "Altandörr [%s]" {mios="unit:house,device:42/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
+Number DoorBack_Battery "Altandörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:42/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
 Contact DoorSide "Grovköksdörr [%s]" {mios="unit:house,device:16/service/urn:micasaverde-com:serviceId:SecuritySensor1/Tripped"}
 Number DoorSide_Battery "Grovköksdörr batteri [%d]" (MBatteryLevel) {mios="unit:house,device:16/service/urn:micasaverde-com:serviceId:HaDevice1/BatteryLevel"}
