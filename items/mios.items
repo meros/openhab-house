@@ -3,19 +3,19 @@ Group:Switch:AND MAutoLamps "Mysbelysning nere" (MAll)
 Group:Number:MIN MBatteryLevel "Minimum battery level [%d]" (MAll)
 
 Switch SwitchCoffee "Kaffebryggaren" {mios="unit:house,device:30/service/SwitchPower1/Status"}
-Number SwitchCoffee_Watt "Kaffebryggaren watt [%d] W" {mios="unit:house,device:30/service/EnergyMetering1/Watts"}
+Number SwitchCoffee_Watt "Kaffebryggaren watt [%.1f] W" {mios="unit:house,device:30/service/EnergyMetering1/Watts"}
 
 Switch SwitchLampKitchen "Kökslampa" (MAutoLamps) {mios="unit:house,device:33/service/SwitchPower1/Status"}
-Number SwitchLampKitchen_Watt "Kökslampa watt [%d] W" {mios="unit:house,device:33/service/EnergyMetering1/Watts"}
+Number SwitchLampKitchen_Watt "Kökslampa watt [%.1f] W" {mios="unit:house,device:33/service/EnergyMetering1/Watts"}
 
 Switch SwitchLampGlas "Glaslampa" (MAutoLamps) {mios="unit:house,device:38/service/SwitchPower1/Status"}
-Number SwitchLampGlas_Watt "Glaslampa watt [%d] W" {mios="unit:house,device:38/service/EnergyMetering1/Watts"}
+Number SwitchLampGlas_Watt "Glaslampa watt [%.1f] W" {mios="unit:house,device:38/service/EnergyMetering1/Watts"}
 
 Switch SwitchLampOrange "Oranga lampan" (MAutoLamps) {mios="unit:house,device:31/service/SwitchPower1/Status"}
-Number SwitchLampOrange_Watt "Oranga lampan watt [%d] W" {mios="unit:house,device:31/service/EnergyMetering1/Watts"}
+Number SwitchLampOrange_Watt "Oranga lampan watt [%.1f] W" {mios="unit:house,device:31/service/EnergyMetering1/Watts"}
 
 Switch SwitchLampSpot "Spotlight ute" {mios="unit:house,device:40/service/SwitchPower1/Status"}
-Number SwitchLampSpot_Watt "Spotlight ute watt [%d] W" {mios="unit:house,device:40/service/EnergyMetering1/Watts"}
+Number SwitchLampSpot_Watt "Spotlight ute watt [%.1f] W" {mios="unit:house,device:40/service/EnergyMetering1/Watts"}
 
 Dimmer DimmerLampComputer "Dimmern vid datorn" <slider> {mios="unit:house,device:18/service/Dimming1/LoadLevelStatus"}
 
