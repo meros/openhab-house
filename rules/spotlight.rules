@@ -11,7 +11,7 @@ Item MotionPorch changed
 then
 	// Always reset timer when state changes
 	if (motionTimer != null) {
-		motionTimer.cancel()
+		motionTimer.cancel
 		motionTimer = null
 	}
 	
@@ -37,19 +37,17 @@ then
 	var spotlightOn = Spotlight_Motion.state == ON && Spotlight_SunElevation.state < sunMinElevation && Alarm_Away.state == ON
 	
 	
-	if (spotlightOn == oldSpotlightOn) {
-		return;
-	}
-		
-	if (spotlightOn) {
-	   	sendCommand(SwitchLampSpot, ON)		 
-		pushover("Turning on spotlight!")							
-	} else {
-	   	sendCommand(SwitchLampSpot, OFF)		 
-		pushover("Turning off spotlight!")
-	}
+	if (spotlightOn != oldSpotlightOn) {
+		if (spotlightOn) {
+		   	sendCommand(SwitchLampSpot, ON)		 
+			pushover("Turning on spotlight!")							
+		} else {
+			sendCommand(SwitchLampSpot, OFF)		 
+			pushover("Turning off spotlight!")
+		}
 	
-	oldSpotlightOn = spotlightOn;
+		oldSpotlightOn = spotlightOn
+	}
 end
 
 rule "Door open"

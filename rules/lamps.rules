@@ -16,7 +16,7 @@ Item MotionKitchen received update
 then
 	// Always reset timer when state changes
 	if (motionTimer != null) {
-		motionTimer.cancel()
+		motionTimer.cancel
 		motionTimer = null
 	}
 	
@@ -50,7 +50,7 @@ when
 Item AutoLamps_ForceOn received update
 then
 	if (forceOnTimer != null) {
-		forceOnTimer.cancel()
+		forceOnTimer.cancel
 		forceOnTimer = null
 	}
 
@@ -73,16 +73,14 @@ then
 		(AutoLamps_SunElevation.state < sunMinElevation &&
 			(AutoLamps_NightTime.state != ON || AutoLamps_Motion.state == ON)) 
 	
-	if (lampsOn == oldLampsOn) {
-		return;
-	}
-		
-	if (lampsOn) {
-		sendCommand(MAutoLamps, ON)	
-	} else {
-		sendCommand(MAutoLamps, OFF)
-	}
+	if (lampsOn != oldLampsOn) {
+		if (lampsOn) {
+			sendCommand(MAutoLamps, ON)	
+		} else {
+			sendCommand(MAutoLamps, OFF)
+		}
 	
-	oldLampsOn = lampsOn;
+		oldLampsOn = lampsOn
+	}
 end
 

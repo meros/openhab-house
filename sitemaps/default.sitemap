@@ -31,6 +31,7 @@ sitemap house {
 		Text item=AutoLamps_SunElevation
 		Switch item=AutoLamps_Motion
 		Switch item=AutoLamps_NightTime
+		Switch item=AutoLamps_ForceOn
 		Text item=MotionKitchen
 		Text item=DoorFront
 		Text item=DoorFront_Battery		
